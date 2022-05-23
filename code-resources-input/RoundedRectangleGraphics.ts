@@ -1,8 +1,8 @@
 // v1.0.0
+/*import Phaser from "phaser";*/
+/*import drawRoundedRectangle from "./drawRoundedRectangle";*/
 
-
-
-class RoundedRectangleGraphics extends Phaser.GameObjects.Graphics
+/*export default */class RoundedRectangleGraphics extends Phaser.GameObjects.Graphics
     implements IRoundedRectangleGraphics {
 
     // SizeComponent

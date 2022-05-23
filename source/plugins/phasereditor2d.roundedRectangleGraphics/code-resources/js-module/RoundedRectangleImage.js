@@ -1,10 +1,7 @@
 // v1.0.0
-
-
-
-class RoundedRectangleImage extends Phaser.GameObjects.Image 
-    implements IRoundedRectangleGraphics {
-
+import Phaser from "phaser";
+import drawRoundedRectangle from "./drawRoundedRectangle";
+export default class RoundedRectangleImage extends Phaser.GameObjects.Image {
     radiusTopLeft = 20;
     radiusTopRight = 20;
     radiusBottomLeft = 20;
@@ -22,7 +19,6 @@ class RoundedRectangleImage extends Phaser.GameObjects.Image
     shadowOffsetRight = 0;
     shadowOffsetTop = 0;
     shadowOffsetBottom = 0;
-
     static PROPS = [
         "width",
         "height",
@@ -44,50 +40,31 @@ class RoundedRectangleImage extends Phaser.GameObjects.Image
         "shadowOffsetTop",
         "shadowOffsetBottom"
     ];
-
-    private _currentKey = "";
-
-    constructor(scene: Phaser.Scene, x: number, y: number, width: number, height: number) {
+    _currentKey = "";
+    constructor(scene, x, y, width, height) {
         super(scene, x, y, "");
-
         this.setSize(width, height);
-
         scene.events.once("update", () => this.redraw());
     }
-
-    private createKey() {
-
+    createKey() {
         return `RoundedRectangleImage[${RoundedRectangleImage.PROPS
-            .map(p => (this as any)[p]).join(",")}]`;
+            .map(p => this[p]).join(",")}]`;
     }
-
-    redraw(): void {
-
+    redraw() {
         const key = this.createKey();
-
         if (key !== this._currentKey) {
-
             if (this.scene.textures.exists(key)) {
-
                 // console.log(`RoundedRectangleImage: resuse the key ${key}`);
-
-            } else {
-
+            }
+            else {
                 // console.log(`RoundedRectangleImage: generate key ${key}`);
-
                 const gr = new Phaser.GameObjects.Graphics(this.scene);
-
                 gr.translateCanvas(this.originX * this.width, this.originY * this.height);
-
                 drawRoundedRectangle(this, gr);
-
                 gr.generateTexture(key, this.width, this.height);
-
                 gr.destroy();
             }
-
             this._currentKey = key;
-
             this.setTexture(key);
         }
     }

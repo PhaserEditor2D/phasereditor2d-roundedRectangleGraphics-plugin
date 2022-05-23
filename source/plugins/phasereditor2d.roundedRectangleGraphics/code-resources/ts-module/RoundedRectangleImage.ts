@@ -1,5 +1,4 @@
 // v1.0.0
-
 import Phaser from "phaser";
 import drawRoundedRectangle from "./drawRoundedRectangle";
 

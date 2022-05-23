@@ -1,18 +1,11 @@
 // v1.0.0
-
-
-
-class RoundedRectangleGraphics extends Phaser.GameObjects.Graphics
-    implements IRoundedRectangleGraphics {
-
+class RoundedRectangleGraphics extends Phaser.GameObjects.Graphics {
     // SizeComponent
     width = 200;
     height = 200;
-
     // OriginComponent
     originX = 0.5;
     originY = 0.5;
-
     // RoundedRectangleComponent
     radiusTopLeft = 20;
     radiusTopRight = 20;
@@ -31,44 +24,29 @@ class RoundedRectangleGraphics extends Phaser.GameObjects.Graphics
     shadowOffsetRight = 0;
     shadowOffsetTop = 0;
     shadowOffsetBottom = 0;
-
-    constructor(scene: Phaser.Scene, x: number, y: number, width: number, height: number) {
+    constructor(scene, x, y, width, height) {
         super(scene, { x, y });
-
         this.width = width;
         this.height = height;
-
         scene.events.once("update", () => this.redraw());
     }
-
     redraw() {
-
         this.clear();
-
         drawRoundedRectangle(this, this);
     }
-
-    setSize(width: number, height: number) {
-
+    setSize(width, height) {
         this.width = width;
         this.height = height;
-
         return this;
     }
-
     updateDisplayOrigin() {
-
         this.displayOriginX = this.width * this.originX;
         this.displayOriginY = this.height * this.originY;
-
         return this;
     }
-
-    setOrigin(originX: number, originY: number) {
-
+    setOrigin(originX, originY) {
         this.originX = originX;
         this.originY = originY;
-
         this.updateDisplayOrigin();
     }
 }

@@ -1,8 +1,8 @@
 // v1.0.0
+/*import Phaser from "phaser";*/
+/*import drawRoundedRectangle from "./drawRoundedRectangle";*/
 
-
-
-class RoundedRectangleImage extends Phaser.GameObjects.Image 
+/*export default */class RoundedRectangleImage extends Phaser.GameObjects.Image 
     implements IRoundedRectangleGraphics {
 
     radiusTopLeft = 20;

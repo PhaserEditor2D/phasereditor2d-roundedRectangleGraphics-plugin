@@ -1,8 +1,8 @@
 // version: 1.0.0
-import Phaser from "phaser";
-import RoundedRectangleImage from "./RoundedRectangleImage";
+/*import Phaser from "phaser";*/
+/*import RoundedRectangleImage from "./RoundedRectangleImage";*/
 
-export default function registerRoundedRectangleImageFactory() {
+/*export default */function registerRoundedRectangleImageFactory() {
 
     Phaser.GameObjects.GameObjectFactory.register("roundedRectangleImage",
         function (this: Phaser.GameObjects.GameObjectFactory, x: number, y: number, width: number, height:number) {

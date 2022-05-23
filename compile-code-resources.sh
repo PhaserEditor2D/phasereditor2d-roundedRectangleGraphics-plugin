@@ -1,31 +1,20 @@
 #!/bin/bash
 
-#!/bin/bash
-
-function compile {
-
-    echo Compiling $1
-
-    cd ts
-        npx tsc -t esnext --outDir ../js "$1".ts &> /dev/null
-    cd ..
-    
-    cd ts-module
-        sed -i "" -e "s/\/\*//" "$1"
-        sed -i "" -e "s/\*\///" "$1"
-        npx tsc -t esnext --outDir ../js-module "$1".ts &> /dev/null
-    cd ..
-}
 
 cd source/plugins/*/code-resources
 
-rm -Rf js js-module ts-module
-mkdir js js-module ts-module
+rm -Rf js js-module ts ts-module
+mkdir js js-module ts ts-module 
 
-cp -R ts/*.ts ts-module/
+cp ../../../../code-resources-input/* ts/
+cp ts/*.ts ts-module/
 
-compile RoundedRectangleGraphics.ts
-compile registerRoundedRectangleGraphicsFactory.ts
-compile RoundedRectangleImage.ts
-compile registerRoundedRectangleImageFactory.ts
-compile drawRoundedRectangle.ts
+for f in ts/*; do
+    export n=$(basename $f)
+    echo Processing $n
+    sed -i "" -e "s/\/\*.*\*\///" ts/"$n"
+    sed -i "" -e "s/\/\*//" -e "s/\*\///" ts-module/"$n"
+done
+
+npx tsc -t esnext --outDir js/ ts/*.ts &> /dev/null
+npx tsc -t esnext --outDir js-module/ ts-module/*.ts &> /dev/null

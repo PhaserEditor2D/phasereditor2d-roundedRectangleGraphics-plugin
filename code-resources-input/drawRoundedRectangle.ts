@@ -1,7 +1,7 @@
 // v1.0.0
-import Phaser from "phaser";
+/*import Phaser from "phaser";*/
 
-export default function drawRoundedRectangle(obj: IRoundedRectangleGraphics, gr: Phaser.GameObjects.Graphics) {
+/*export default */function drawRoundedRectangle(obj: IRoundedRectangleGraphics, gr: Phaser.GameObjects.Graphics) {
 
     gr.translateCanvas(-obj.originX * obj.width, - obj.originY * obj.height);
 

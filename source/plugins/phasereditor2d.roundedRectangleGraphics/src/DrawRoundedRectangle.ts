@@ -1,6 +1,6 @@
 namespace phasereditor2d.roundedRectangleGraphics {
 
-    export function renderRoundedRectangle(obj: IRoundedRectangle, gr: Phaser.GameObjects.Graphics) {
+    export function drawRoundedRectangle(obj: IRoundedRectangle, gr: Phaser.GameObjects.Graphics) {
 
         gr.translateCanvas(-obj.originX * obj.width, - obj.originY * obj.height);
 

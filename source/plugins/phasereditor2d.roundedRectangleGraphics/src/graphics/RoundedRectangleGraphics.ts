@@ -62,7 +62,7 @@ namespace phasereditor2d.roundedRectangleGraphics.graphics {
 
             this.clear();
 
-            renderRoundedRectangle(this, this);
+            drawRoundedRectangle(this, this);
         }
 
         setSize(width: number, height: number) {

@@ -13,7 +13,7 @@ namespace phasereditor2d.roundedRectangleGraphics {
         }
 
         constructor() {
-            super("phasereditor2d.roundedRectangle");
+            super("phasereditor2d.roundedRectangleGraphics");
         }
 
         registerExtensions(reg: colibri.ExtensionRegistry) {
@@ -30,31 +30,8 @@ namespace phasereditor2d.roundedRectangleGraphics {
                 RoundedRectangleCodeResources.getInstance().preload()
             ));
 
-            reg.addExtension(new colibri.ui.ide.commands.CommandExtension(manager => {
-
-                manager.addCategory({
-                    id: CAT_ROUNDED_RECTANGLE,
-                    name: "Rounded Rectangle",
-                });
-
-                for (const spec of ["js", "js-module", "ts", "ts-module"]) {
-
-                    manager.add({
-                        command: {
-                            id: CMD_CREATE_ROUNDED_USER_FILES + "." + spec,
-                            category: CAT_ROUNDED_RECTANGLE,
-                            name: `Create Rounded Rectangle User Files (${spec})`,
-                            tooltip: "Create the user files with the RoundedRectangle API."
-                        },
-                        handler: {
-                            executeFunc: args => {
-
-                                RoundedRectangleCodeResources.getInstance().createFiles(spec as any);
-                            }
-                        }
-                    });
-                }
-            }));
+            RoundedRectangleCodeResources.getInstance()
+                .registerCommands(CAT_ROUNDED_RECTANGLE, "Rounded Rectangle Graphics", reg);
         }
     }
 

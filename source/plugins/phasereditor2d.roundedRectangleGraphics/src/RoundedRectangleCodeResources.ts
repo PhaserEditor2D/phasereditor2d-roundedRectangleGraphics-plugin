@@ -1,6 +1,9 @@
+
 namespace phasereditor2d.roundedRectangleGraphics {
 
     import controls = colibri.ui.controls;
+
+    const CLASSNAMES = ["RoundedRectangleGraphics", "RoundedRectangleImage"];
 
     export class RoundedRectangleCodeResources extends scene.core.code.CodeResources {
 
@@ -14,15 +17,14 @@ namespace phasereditor2d.roundedRectangleGraphics {
         private constructor() {
             super(RoundedRectanglePlugin.getInstance());
 
-            for (const spec of ["js", "js-module", "ts", "ts-module"]) {
+            for (const clsName of CLASSNAMES) {
 
-                const ext = this.getExt(spec);
-
-                this.addResource(spec + "/RoundedRectangle", "data/" + spec + "/RoundedRectangle." + ext);
-                this.addResource(spec + "/registerRoundedRectangleFactory", "data/" + spec + "/registerRoundedRectangleFactory." + ext);
+                this.addCodeResource(clsName);
+                this.addCodeResource(`register${clsName}Factory`);
             }
 
-            this.addResource("roundedRectangle.d.ts", "data/roundedRectangle.d.ts");
+            this.addCodeResource("drawRoundedRectangle");
+            this.addCodeDefsResource("roundedRectangleGraphics");
         }
 
         private getExt(spec: string) {
@@ -62,23 +64,27 @@ namespace phasereditor2d.roundedRectangleGraphics {
 
                 const dlg = new controls.dialogs.ProgressDialog();
                 dlg.create();
-                dlg.setTitle("Create RoundedRectangle API Files");
+                dlg.setTitle("Create RoundedRectangleGraphics API Files");
 
                 const monitor = new controls.dialogs.ProgressDialogMonitor(dlg);
-                monitor.addTotal(3);
+                monitor.addTotal(1 + CLASSNAMES.length * 2);
 
                 const newFiles = [];
 
                 const ext = this.getExt(spec);
 
-                newFiles.push(await this.createFile(spec + "/RoundedRectangle", folder, "RoundedRectangle." + ext));
-                monitor.step();
 
-                newFiles.push(await this.createFile(spec + "/registerRoundedRectangleFactory", folder,
-                    "registerRoundedRectangleFactory." + ext));
-                monitor.step();
+                for (const clsName of CLASSNAMES) {
 
-                newFiles.push(await this.createFile("roundedRectangle.d.ts", folder, "roundedRectangle.d.ts"));
+                    newFiles.push(await this.createFile(`${spec}/${clsName}`, folder, `${clsName}.${ext}`));
+                    monitor.step();
+
+                    newFiles.push(await this.createFile(`${spec}/register${clsName}Factory`, folder,
+                        `register${clsName}Factory.${ext}`));
+                    monitor.step();
+                }
+
+                newFiles.push(await this.createFile("roundedRectangleGraphics.d.ts", folder, "roundedRectangle.d.ts"));
                 monitor.step();
 
                 dlg.close();

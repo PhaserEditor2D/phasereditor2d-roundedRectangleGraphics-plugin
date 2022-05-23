@@ -61,7 +61,7 @@ namespace phasereditor2d.roundedRectangleGraphics.image {
 
                     gr.translateCanvas(this.originX * this.width, this.originY * this.height);
 
-                    renderRoundedRectangle(this, gr);
+                    drawRoundedRectangle(this, gr);
 
                     gr.generateTexture(key, this.width, this.height);
 

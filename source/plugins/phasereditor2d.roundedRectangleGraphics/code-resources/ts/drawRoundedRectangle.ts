@@ -1,6 +1,8 @@
 // v1.0.0
-
-function drawRoundedRectangle(obj: IRoundedRectangleGraphics, gr: Phaser.GameObjects.Graphics) {
+/*
+import Phaser from "phaser";
+*/
+/*export default */function drawRoundedRectangle(obj: IRoundedRectangleGraphics, gr: Phaser.GameObjects.Graphics) {
 
     gr.translateCanvas(-obj.originX * obj.width, - obj.originY * obj.height);
 
@@ -69,15 +71,15 @@ function drawRoundedRectangle(obj: IRoundedRectangleGraphics, gr: Phaser.GameObj
     }
 }
 
-const shadowRadius = (radius: number, x1: number, y1: number, x2: number, y2: number) => {
+function shadowRadius(radius: number, x1: number, y1: number, x2: number, y2: number) {
 
     return radius === 0 ? 0
         : radius + Phaser.Math.Distance.Between(x1, y1, x2, y2) / Phaser.Math.TAU;
 }
 
-const renderShape = (obj: IRoundedRectangleGraphics, gr: Phaser.GameObjects.Graphics,
+function renderShape(obj: IRoundedRectangleGraphics, gr: Phaser.GameObjects.Graphics,
     x: number, y: number, width: number, height: number,
-    tl?: number, tr?: number, bl?: number, br?: number) => {
+    tl?: number, tr?: number, bl?: number, br?: number) {
 
     tl ??= obj.radiusTopLeft;
     tr ??= obj.radiusTopRight;

@@ -71,15 +71,15 @@ export default function drawRoundedRectangle(obj: IRoundedRectangleGraphics, gr:
     }
 }
 
-const shadowRadius = (radius: number, x1: number, y1: number, x2: number, y2: number) => {
+function shadowRadius(radius: number, x1: number, y1: number, x2: number, y2: number) {
 
     return radius === 0 ? 0
         : radius + Phaser.Math.Distance.Between(x1, y1, x2, y2) / Phaser.Math.TAU;
 }
 
-const renderShape = (obj: IRoundedRectangleGraphics, gr: Phaser.GameObjects.Graphics,
+function renderShape(obj: IRoundedRectangleGraphics, gr: Phaser.GameObjects.Graphics,
     x: number, y: number, width: number, height: number,
-    tl?: number, tr?: number, bl?: number, br?: number) => {
+    tl?: number, tr?: number, bl?: number, br?: number) {
 
     tl ??= obj.radiusTopLeft;
     tr ??= obj.radiusTopRight;

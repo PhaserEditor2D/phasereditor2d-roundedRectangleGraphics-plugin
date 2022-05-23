@@ -20,7 +20,7 @@ namespace phasereditor2d.roundedRectangleGraphics.graphics {
 
         getBlockCellRenderer() {
 
-            return RoundedRectangleBlockCellRenderer.getInstance();
+            return new RoundedRectangleBlockCellRenderer();
         }
 
         acceptsDropData(data: any): boolean {

@@ -22,7 +22,8 @@ namespace phasereditor2d.roundedRectangleGraphics.image {
 
         getBlockCellRenderer() {
 
-            return RoundedRectangleBlockCellRenderer.getInstance();
+            return new RoundedRectangleBlockCellRenderer(
+                scene.ScenePlugin.getInstance().getIcon(scene.ICON_IMAGE_TYPE));
         }
 
         acceptsDropData(data: any): boolean {

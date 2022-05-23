@@ -5,11 +5,12 @@ namespace phasereditor2d.roundedRectangleGraphics {
 
     export class RoundedRectangleBlockCellRenderer extends scene.ui.sceneobjects.ShapeBlockCellRenderer {
 
-        static _instance: RoundedRectangleBlockCellRenderer;
+        private _icon: controls.IImage;
 
-        static getInstance() {
+        constructor(icon?: controls.IImage) {
+            super();
 
-            return this._instance ? this._instance : (this._instance = new RoundedRectangleBlockCellRenderer());
+            this._icon = icon;
         }
 
         protected renderShapeCell(ctx: CanvasRenderingContext2D, args: controls.viewers.RenderCellArgs) {
@@ -24,6 +25,14 @@ namespace phasereditor2d.roundedRectangleGraphics {
             ctx.beginPath();
             RoundedRectangleBlockCellRenderer.drawRoundedRect(ctx, x, y, size, size, r, r, r, r);
             ctx.stroke();
+
+            if (this._icon && size > 16) {
+
+                const iconSize = controls.RENDER_ICON_SIZE;
+
+                this._icon.paint(ctx, args.x + args.w / 2 - iconSize / 2, args.y + args.h / 2 - iconSize / 2,
+                    iconSize, iconSize, true);
+            }
         }
 
         static drawRoundedRect(

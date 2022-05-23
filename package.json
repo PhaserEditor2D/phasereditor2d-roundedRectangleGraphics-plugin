@@ -1,5 +1,5 @@
 {
-	"name": "phasereditor2d-roundedrectangle-plugin",
+	"name": "phasereditor2d-roundedrectanglegraphics-plugin",
 	"version": "1.0.2",
 	"description": "A Phaser Editor 2D plugin with RoundedRectangle game object support.",
 	"scripts": {

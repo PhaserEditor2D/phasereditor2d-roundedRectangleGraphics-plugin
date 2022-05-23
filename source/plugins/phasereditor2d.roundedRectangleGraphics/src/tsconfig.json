@@ -1,7 +1,7 @@
 {
     "extends": "../../../tsconfig-base.json",
     "compilerOptions": {
-        "outFile": "../_out/phasereditor2d.roundedRectangle.js"
+        "outFile": "../_out/phasereditor2d.roundedRectangleGraphics.js"
     },
     "references": [
         {

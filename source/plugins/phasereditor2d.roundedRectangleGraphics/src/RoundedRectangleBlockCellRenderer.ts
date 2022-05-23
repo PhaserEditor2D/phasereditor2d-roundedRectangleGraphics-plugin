@@ -1,5 +1,5 @@
 
-namespace phasereditor2d.roundedRectangle {
+namespace phasereditor2d.roundedRectangleGraphics {
 
     import controls = colibri.ui.controls;
 

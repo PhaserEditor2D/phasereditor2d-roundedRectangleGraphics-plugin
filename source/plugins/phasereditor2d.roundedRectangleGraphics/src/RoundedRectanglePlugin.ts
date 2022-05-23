@@ -1,7 +1,7 @@
-namespace phasereditor2d.roundedRectangle {
+namespace phasereditor2d.roundedRectangleGraphics {
 
-    export const CAT_ROUNDED_RECTANGLE = "phasereditor2d.roundedRectangle.category";
-    export const CMD_CREATE_ROUNDED_USER_FILES = "phasereditor2d.roundedRectangle.CreateRoundedRectangleUserFiles";
+    export const CAT_ROUNDED_RECTANGLE = "phasereditor2d.roundedRectangleGraphics.category";
+    export const CMD_CREATE_ROUNDED_USER_FILES = "phasereditor2d.roundedRectangleGraphics.CreateRoundedRectangleUserFiles";
 
     export class RoundedRectanglePlugin extends colibri.Plugin {
 
@@ -18,12 +18,10 @@ namespace phasereditor2d.roundedRectangle {
 
         registerExtensions(reg: colibri.ExtensionRegistry) {
 
-            reg.addExtension(legacy.RoundedRectangleExtension.getInstance());
             reg.addExtension(graphics.RoundedRectangleGraphicsExtension.getInstance());
             reg.addExtension(image.RoundedRectangleImageExtension.getInstance());
 
             reg.addExtension(new scene.ui.editor.properties.SceneEditorPropertySectionExtension(
-                page => new legacy.RoundedRectangleSection(page),
                 page => new RoundedRectangleSection(page)
             ));
 

@@ -1,4 +1,4 @@
-namespace phasereditor2d.roundedRectangle {
+namespace phasereditor2d.roundedRectangleGraphics {
 
     export function renderRoundedRectangle(obj: IRoundedRectangle, gr: Phaser.GameObjects.Graphics) {
 

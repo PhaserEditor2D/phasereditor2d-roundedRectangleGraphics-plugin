@@ -1,10 +1,10 @@
-namespace phasereditor2d.roundedRectangle {
+namespace phasereditor2d.roundedRectangleGraphics {
 
     import controls = colibri.ui.controls;
 
     export class RoundedRectangleSection extends scene.ui.sceneobjects.SceneGameObjectSection<IRoundedRectangle> {
 
-        static SECTION_ID = "phasereditor2d.roundedRectangle.RoundedRectangleSection";
+        static SECTION_ID = "phasereditor2d.roundedRectangleGraphics.RoundedRectangleSection";
 
         constructor(page: controls.properties.PropertyPage) {
             super(page, RoundedRectangleSection.SECTION_ID, "Rounded Rectangle", false, false);

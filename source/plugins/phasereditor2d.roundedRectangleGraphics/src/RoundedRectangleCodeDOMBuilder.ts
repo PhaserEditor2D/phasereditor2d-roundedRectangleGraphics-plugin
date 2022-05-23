@@ -1,4 +1,4 @@
-namespace phasereditor2d.roundedRectangle {
+namespace phasereditor2d.roundedRectangleGraphics {
 
     import code = phasereditor2d.scene.core.code;
     import sceneobjects = phasereditor2d.scene.ui.sceneobjects;

@@ -1,4 +1,4 @@
-namespace phasereditor2d.roundedRectangle.graphics {
+namespace phasereditor2d.roundedRectangleGraphics.graphics {
 
     export class RoundedRectangleGraphicsExtension extends scene.ui.sceneobjects.SceneGameObjectExtension {
 

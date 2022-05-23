@@ -4,7 +4,7 @@
             "path": "../../PhaserEditor2D-v3/source/editor/plugins/colibri/src"
         },
         {
-            "path": "./plugins/phasereditor2d.roundedRectangle/src"
+            "path": "./plugins/phasereditor2d.roundedRectangleGraphics/src"
         }
     ],
     "files": []

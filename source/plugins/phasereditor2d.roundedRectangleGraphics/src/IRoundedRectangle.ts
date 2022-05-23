@@ -1,4 +1,4 @@
-namespace phasereditor2d.roundedRectangle {
+namespace phasereditor2d.roundedRectangleGraphics {
 
     export interface IRoundedRectangle extends scene.ui.sceneobjects.ISceneGameObject {
 

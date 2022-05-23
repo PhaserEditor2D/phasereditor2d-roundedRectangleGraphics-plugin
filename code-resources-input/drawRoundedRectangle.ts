@@ -1,4 +1,4 @@
-// v1.0.0
+// version
 /*import Phaser from "phaser";*/
 
 /*export default */function drawRoundedRectangle(obj: IRoundedRectangleGraphics, gr: Phaser.GameObjects.Graphics) {

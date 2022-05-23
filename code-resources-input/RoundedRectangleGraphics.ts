@@ -1,4 +1,4 @@
-// v1.0.0
+// version
 /*import Phaser from "phaser";*/
 /*import drawRoundedRectangle from "./drawRoundedRectangle";*/
 

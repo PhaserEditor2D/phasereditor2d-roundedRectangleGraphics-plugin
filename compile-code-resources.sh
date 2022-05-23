@@ -1,5 +1,6 @@
 #!/bin/bash
 
+VER=$(node -p -e "require('./package.json').version")
 
 cd source/plugins/*/code-resources
 
@@ -12,8 +13,8 @@ cp ts/*.ts ts-module/
 for f in ts/*; do
     export n=$(basename $f)
     echo Processing $n
-    sed -i "" -e "s/\/\*.*\*\///" ts/"$n"
-    sed -i "" -e "s/\/\*//" -e "s/\*\///" ts-module/"$n"
+    sed -i "" -e "s/\/\*.*\*\///" -e "s/\/\/ version/\/\/ v$VER/" ts/"$n"
+    sed -i "" -e "s/\/\*//" -e "s/\*\///" -e "s/\/\/ version/\/\/ v$VER/" ts-module/"$n"
 done
 
 npx tsc -t esnext --outDir js/ ts/*.ts &> /dev/null

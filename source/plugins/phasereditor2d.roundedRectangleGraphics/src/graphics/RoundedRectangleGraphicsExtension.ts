@@ -3,6 +3,7 @@ namespace phasereditor2d.roundedRectangleGraphics.graphics {
     export class RoundedRectangleGraphicsExtension extends scene.ui.sceneobjects.SceneGameObjectExtension {
 
         private static _instance: RoundedRectangleGraphicsExtension;
+        private _help: string;
 
         static getInstance() {
 
@@ -16,6 +17,17 @@ namespace phasereditor2d.roundedRectangleGraphics.graphics {
                 category: scene.SCENE_OBJECT_SHAPE_CATEGORY,
                 icon: scene.ScenePlugin.getInstance().getIconDescriptor(scene.ICON_BUILD)
             });
+
+            this._help = [
+                "**RoundedRectangleGraphics**\n",
+                "A RoundedRectangleGraphics Game Object.",
+                "It extends the `Phaser.GameObjects.Graphics` class and renders a rounded rectangle.",
+                "You can change properties like the radius, shadow, background and stroke styles."].join("\n\n");
+        }
+
+        getHelp(): string {
+
+            return this._help;
         }
 
         getBlockCellRenderer() {

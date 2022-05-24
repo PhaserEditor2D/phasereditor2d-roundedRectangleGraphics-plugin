@@ -1,32 +1,34 @@
-# Phaser Editor 2D v3 - RoundedRectangle plugin
+# RoundedRectangleGraphics plugin for Phaser Editor 2D
 
-This repository contains RoundedRectangle plugin for Phaser Editor 2D v3.
+This repository contains the RoundedRectangleGraphics plugin for Phaser Editor 2D v3.
+
+It requires the version `v3.33.2` (or newer) of the editor.
 
 ## Install
 
 The plugin is distributed as a NodeJS package:
 
 ```bash
-$ npm i --save-dev phasereditor2d-roundedrectangle-plugin
+$ npm i --save-dev phasereditor2d-roundedrectanglegraphics-plugin
 ```
 
 It is important that you install the package as a development dependency (`--save-dev`), because Phaser Editor 2D only searches for plugins in that section. Also, the `package.json` file should be in the root of the project.
 
-## Creating a RoundedRectangle object
+## Creating a RoundedRectangleGraphics object
 
-For creating a RoundedRectangle object, you can drag the **RoundedRectangle** type from the **Built-In** section of the **Blocks** view and drop it in the scene.
+For creating a RoundedRectangleGraphics object, you can drag the **RoundedRectangleGraphics** type from the **Built-In** section of the **Blocks** view and drop it in the scene.
 
 By default, it shows a white rectangle:
 
-![Create object](images/create-roundedRectangle.png)
+![Create object](images/create-roundedRectangle.jpeg)
 
-## RoundedRectangle parameters  
+## RoundedRectangleGraphics parameters  
 
-A RoundedRectangle object is similar to the Rectangle game object. It has size, background, stroke, in addition to specific properties, like radius, and shadow.
+A RoundedRectangleGraphics object is similar to the Rectangle game object. It has size, background, stroke, in addition to specific properties, like radius, and shadow.
 
 The shadow is part of the bound of the object, it means, if you increase the shadow offset, the background of the object decreases.
 
-![RoundedRectangle properties](images/properties.png)
+![RoundedRectangleGraphics properties](images/properties.jpeg)
 
 There are other properties common to the RenderTexture object, like those in the sections Transform, Origin, Visible, etc...
 
@@ -38,11 +40,11 @@ You can resize the RoundedRectangle object with the **Size Tool**. Press the `Z`
 
 ## Code generation
 
-The RoundedRectangle object is not available in the Phaser built-in API. Phaser Editor 2D uses an internal implementation of this object, and provides the source code of a RoundedRectangle game object that you can use in your project.
+The RoundedRectangleGraphics object is not available in the Phaser built-in API. Phaser Editor 2D uses an internal implementation of this object, and provides the source code of a RoundedRectangleGraphics game object that you can use in your project.
 
-To get the source code of the RoundedRectangle game object, execute the command **Create Rounded Rectangle User Files**:
+To get the source code of the RoundedRectangleGraphics game object, execute the command **Rounded Rectangle Graphics: Create User Files**:
 
-![Create rounded rectangle files command](images/create-files-commands.png)
+![Create rounded rectangle files command](images/create-files-commands.jpeg)
 
 You can open the Command Palette in the main menu or by pressing the `Ctrl+K` keys.
 
@@ -53,31 +55,31 @@ Look you there are four different commands:
 * For creating TypeScript files as ES modules.
 * For creating simple TypeScript files.
 
-These commands create a series of files with the source code of the RoundedRectangle object. The files are copied in the folder selected in the **Files** view.
+These commands create a series of files with the source code of the RoundedRectangleGraphics class. The files are copied in the folder selected in the **Files** view.
 
-![Rounded rectangle user files](images/api-files.png)
+![Rounded rectangle user files](images/api-files.jpeg)
 
 The files are following:
 
-### `RoundedRectangle.ts`
+### `RoundedRectangleGraphics.ts`
  
-Contains the implementation of the RoundedRectangle game object.
+Contains the implementation of the RoundedRectangleGraphics game object. It extends the Phaser class: `Phaser.GameObjects.Graphics`.
 
 You can create a new instance like this:
 
 ```javascript
-const obj = new RoundedRectangle(scene, 10, 10, 100, 100);
+const obj = new RoundedRectangleGraphics(scene, 10, 10, 100, 100);
 scene.add.existing(obj);
 ```
 
-### `registerRoundedRectangleFactory.ts`
+### `registerRoundedRectangleGraphicsFactory.ts`
 
-Contains the `registerRoundedRectangleFactory()` function. 
+Contains the `registerRoundedRectangleGraphicsFactory()` function. 
 
 You should use it for registering a `GameObjectFactory` method. It allows you creating new RoundedRectangle objects like this: 
 
 ```javascript
-const obj = this.add.roundedRectangle(10, 10, 100, 100);
+const obj = this.add.roundedRectangleGraphics(10, 10, 100, 100);
 ```
 Before, you need to register the factory:
 
@@ -85,14 +87,38 @@ Before, you need to register the factory:
 
 const game = new Phaser.Game(...);
 ...
-registerRoundedRectangleFactory();
+registerRoundedRectangleGraphicsFactory();
 ...
 ```
 
-### `roundedRectangle.d.ts`
+### `roundedRectangleGraphics.d.ts`
 
 Contains the TypeScript definitions. Maybe you should move it to the `types` folder of your project. Or you should configure the `tsconfig.json` file finding the definitions.
 
+### `drawRoundedRectangle.ts`
+
+Contains the `drawRoundedRectangle` function. It is a routine for drawing a rounded rectangle in a graphics object.
+
 ### Code customization
 
-You are free to change the code of the generated RoundedRectangle files, however, take in consideration that the scene's code generated by the editor uses always the same public interface of the RoundedRectangle object.
+You are free to change the code of the generated RoundedRectangleGraphics files, however, take in consideration that the scene's code generated by the editor uses always the same public interface of the RoundedRectangleGraphics object.
+
+### The RoundedRectangleImage class
+
+In addition, you can create a **RoundedRectangleImage** game object. It is an image object but with a texture that is generated in the fly. It contains a `redraw()` method that draws a rounded rectangle into an offline graphics object, and use that graphics as a new texture for the image.
+
+I recommend using this implementation of the rounded rectangle if you have a different rounded rectangle objects but with the same properties. This way, the different objects share the same texture, getting a much better rendering performance.
+
+![Create rounded rectangle image object](./images/create-rounded-rectangle-image.jpeg)
+
+For using the RoundedRectangleImage object, you should register its factory:
+
+```javascript
+
+const game = new Phaser.Game(...);
+...
+registerRoundedRectangleImageFactory();
+...
+```
+
+Take a look to the `RoundedRectangleImage.ts` and `registerRoundedRectangleImageFactory.ts` user files.

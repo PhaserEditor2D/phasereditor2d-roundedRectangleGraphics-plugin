@@ -5,7 +5,7 @@ namespace phasereditor2d.roundedRectangleGraphics.image {
     export class RoundedRectangleImageEditorSupport extends sceneobjects.BaseImageEditorSupport<RoundedRectangleImage> {
 
         constructor(obj: RoundedRectangleImage, scene: scene.ui.Scene) {
-            super(RoundedRectangleImageExtension.getInstance(), obj, scene);
+            super(RoundedRectangleImageExtension.getInstance(), obj, scene, false);
 
             this.addComponent(
                 new sceneobjects.SizeComponent(obj),

@@ -1,4 +1,4 @@
-// v1.0.0
+// v1.0.0-beta.1
 class RoundedRectangleGraphics extends Phaser.GameObjects.Graphics {
     // SizeComponent
     width = 200;

@@ -1,4 +1,4 @@
-// v1.0.0
+// v1.0.0-beta.1
 
 
 function drawRoundedRectangle(obj: IRoundedRectangleGraphics, gr: Phaser.GameObjects.Graphics) {

@@ -1,4 +1,4 @@
-// v1.0.0
+// v1.0.0-beta.1
 import Phaser from "phaser";
 export default function drawRoundedRectangle(obj, gr) {
     gr.translateCanvas(-obj.originX * obj.width, -obj.originY * obj.height);

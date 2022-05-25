@@ -35,5 +35,13 @@ namespace phasereditor2d.roundedRectangleGraphics {
         }
     }
 
-    colibri.Platform.addPlugin(RoundedRectanglePlugin.getInstance());
+    if (phasereditor2d.ide.VER < "3.33.2") {
+
+        alert("The 'phasereditor2d-roundedRectangleGraphics-plugin' cannot be installed."
+            + "\nIt requires Phaser Editor 2D v3.33.2 or a newer version.")
+
+    } else {
+
+        colibri.Platform.addPlugin(RoundedRectanglePlugin.getInstance());
+    }
 }

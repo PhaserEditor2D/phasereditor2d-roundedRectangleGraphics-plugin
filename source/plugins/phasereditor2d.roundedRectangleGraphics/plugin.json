@@ -1,6 +1,7 @@
 {
     "id": "phasereditor2d.roundedRectangleGraphics",
     "styles": [],
+    "priority": 2,
     "scripts": [
         "_out/phasereditor2d.roundedRectangleGraphics.js"
     ]

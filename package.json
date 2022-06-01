@@ -1,6 +1,6 @@
 {
 	"name": "phasereditor2d-roundedrectanglegraphics-plugin",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "A Phaser Editor 2D plugin with RoundedRectangle game object support.",
 	"scripts": {
 		"start": "tsc -b -w source",

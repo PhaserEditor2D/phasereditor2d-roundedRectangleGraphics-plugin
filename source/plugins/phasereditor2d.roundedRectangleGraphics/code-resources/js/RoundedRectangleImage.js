@@ -1,4 +1,4 @@
-// v1.0.0-beta.1
+// v1.0.1
 class RoundedRectangleImage extends Phaser.GameObjects.Image {
     radiusTopLeft = 20;
     radiusTopRight = 20;

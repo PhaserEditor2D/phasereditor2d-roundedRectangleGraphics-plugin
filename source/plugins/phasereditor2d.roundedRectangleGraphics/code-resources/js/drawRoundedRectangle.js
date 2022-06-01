@@ -1,4 +1,4 @@
-// v1.0.0-beta.1
+// v1.0.1
 function drawRoundedRectangle(obj, gr) {
     gr.translateCanvas(-obj.originX * obj.width, -obj.originY * obj.height);
     const shadowX1 = obj.shadowOffsetLeft < 0 ? 0 : obj.shadowOffsetLeft;
